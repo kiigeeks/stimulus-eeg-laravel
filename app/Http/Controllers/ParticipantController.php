@@ -117,6 +117,13 @@ class ParticipantController extends Controller
      */
     public function destroy(Participant $participant)
     {
-        //
+        $result = Participant::destroy($participant->id);
+        if ($result) {
+            Alert::success('Congrats', 'Data berhasil dihapus');
+            return back();
+        } else {
+            Alert::error('Failed', 'Gagal diproses! Coba beberapa saat lagi.');
+            return back();
+        }
     }
 }

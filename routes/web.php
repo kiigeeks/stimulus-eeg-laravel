@@ -68,6 +68,7 @@ Route::prefix('cms')
 
 		Route::get('/participants', [ParticipantController::class, 'index'])->name('participants-all');
 		Route::put('/participants/{participant}', [ParticipantController::class, 'update'])->name('participants-update');
+		Route::delete('/participants/{participant}', [ParticipantController::class, 'destroy'])->name('participants-delete');
 
 
         // Route::resource('/statistiks', StatistikController::class);

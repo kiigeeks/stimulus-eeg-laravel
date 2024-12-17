@@ -205,12 +205,16 @@
                                 <h3 class="text-base font-semibold">{{ $data->fullname }}</h3>
                                 <span class="text-sm font-normal">{{ $data->event->name }}</span>
                             </div>
-                            <div class="flex flex-row gap-3">
+                            <form action="{{ route('participants-delete', $data) }}" method="POST" class="flex flex-row gap-3">
+                                @csrf
+                                @method('DELETE')
                                 <div onclick="showModalDetail({{ $data }})" class="px-4 md:px-7 py-1 text-xs font-poppins font-light border border-blue-400 rounded-full cursor-pointer">
-                                {{-- <div onclick="toggleModalDetail()" class="px-4 md:px-7 py-1 text-white text-xs font-poppins font-light border border-bluePrimary rounded-full cursor-pointer"> --}}
                                     Detail
                                 </div>
-                            </div>
+                                <button type="submit" class="px-4 md:px-7 py-1 text-xs font-poppins font-light bg-red-300 rounded-full cursor-pointer">
+                                    Delete
+                                </button>
+                            </form>
                         </div>
                     </div>
                 @endforeach
