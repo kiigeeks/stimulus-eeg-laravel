@@ -9,8 +9,9 @@
     let junior_highschool = localStorage.getItem('junior_highschool');
     let senior_highschool = localStorage.getItem('senior_highschool');
     let favorite_color = localStorage.getItem('color');
-
-    const statements = [
+    let management = localStorage.getItem('management_id');
+    
+    const basicStatements = [
         {
             label: `Nama SMP Anda adalah ${junior_highschool}`,
             type: 'text',
@@ -70,7 +71,463 @@
             type: 'text',
             link: '',
             durations: 6
+        }
+    ];
+
+    const lowStatements = [
+        {
+            label: 'Saya suka mencoba makanan baru dari berbagai budaya.',
+            type: 'text',
+            link: '',
+            durations: 4
         },
+        {
+            label: 'Saya sering merasa tertarik dengan ide-ide abstrak.',
+            type: 'text',
+            link: '',
+            durations: 4
+        },
+        {
+            label: 'Saya menikmati mendiskusikan seni, musik, atau sastra dengan orang lain.',
+            type: 'text',
+            link: '',
+            durations: 4
+        },
+        {
+            label: 'Saya terbuka untuk mempelajari bahasa baru.',
+            type: 'text',
+            link: '',
+            durations: 4
+        },
+        {
+            label: 'Saya merasa terinspirasi ketika mengunjungi tempat-tempat baru.',
+            type: 'text',
+            link: '',
+            durations: 4
+        },
+        {
+            label: 'Saya sering mempertanyakan tradisi atau aturan yang ada.',
+            type: 'text',
+            link: '',
+            durations: 4
+        },
+        {
+            label: 'Saya suka mendengarkan berbagai genre musik.',
+            type: 'text',
+            link: '',
+            durations: 4
+        },
+        {
+            label: 'Saya mudah beradaptasi dengan perubahan mendadak dalam rencana.',
+            type: 'text',
+            link: '',
+            durations: 4
+        },
+        {
+            label: 'Saya sering mencari cara kreatif untuk menyelesaikan masalah.',
+            type: 'text',
+            link: '',
+            durations: 4
+        },
+        {
+            label: 'Saya menikmati hobi yang membutuhkan imajinasi, seperti melukis atau menulis cerita.',
+            type: 'text',
+            link: '',
+            durations: 4
+        },
+        {
+            label: 'Saya menyukai diskusi tentang topik-topik ilmiah atau filosofis.',
+            type: 'text',
+            link: '',
+            durations: 4
+        },
+        {
+            label: 'Saya merasa nyaman keluar dari zona nyaman saya.',
+            type: 'text',
+            link: '',
+            durations: 4
+        },
+        {
+            label: 'Saya sering merasa antusias mempelajari hal-hal baru.',
+            type: 'text',
+            link: '',
+            durations: 4
+        },
+        {
+            label: 'Saya menghargai keindahan dalam bentuk apa pun.',
+            type: 'text',
+            link: '',
+            durations: 4
+        },
+        {
+            label: 'Saya terbuka untuk mencoba metode alternatif dalam bekerja.',
+            type: 'text',
+            link: '',
+            durations: 4
+        },
+        {
+            label: 'Saya selalu menyelesaikan tugas sebelum tenggat waktu.',
+            type: 'text',
+            link: '',
+            durations: 4
+        },
+        {
+            label: 'Saya memiliki daftar tugas yang membantu saya tetap terorganisasi.',
+            type: 'text',
+            link: '',
+            durations: 4
+        },
+        {
+            label: 'Saya merasa puas ketika pekerjaan saya dilakukan dengan sempurna.',
+            type: 'text',
+            link: '',
+            durations: 4
+        },
+        {
+            label: 'Saya mempersiapkan segala sesuatu dengan baik sebelum bepergian.',
+            type: 'text',
+            link: '',
+            durations: 4
+        },
+        {
+            label: 'Saya selalu menepati janji.',
+            type: 'text',
+            link: '',
+            durations: 4
+        },
+        {
+            label: 'Saya jarang menunda pekerjaan hingga menit terakhir.',
+            type: 'text',
+            link: '',
+            durations: 4
+        },
+        {
+            label: 'Saya merasa penting untuk menjaga kebersihan dan kerapian lingkungan saya.',
+            type: 'text',
+            link: '',
+            durations: 4
+        },
+        {
+            label: 'Saya tidak suka meninggalkan pekerjaan setengah jalan.',
+            type: 'text',
+            link: '',
+            durations: 4
+        },
+        {
+            label: 'Saya selalu membaca instruksi sebelum memulai proyek baru.',
+            type: 'text',
+            link: '',
+            durations: 4
+        },
+        {
+            label: 'Saya percaya bahwa dedikasi dan kerja keras adalah kunci keberhasilan.',
+            type: 'text',
+            link: '',
+            durations: 4
+        },
+        {
+            label: 'Saya sering membuat jadwal untuk menjaga waktu tetap efektif.',
+            type: 'text',
+            link: '',
+            durations: 4
+        },
+        {
+            label: 'Saya tidak suka mengambil risiko yang tidak diperhitungkan.',
+            type: 'text',
+            link: '',
+            durations: 4
+        },
+        {
+            label: 'Saya memiliki target hidup yang jelas.',
+            type: 'text',
+            link: '',
+            durations: 4
+        },
+        {
+            label: 'Saya merasa penting untuk mematuhi aturan dan regulasi.',
+            type: 'text',
+            link: '',
+            durations: 4
+        },
+        {
+            label: 'Saya menikmati perasaan puas setelah menyelesaikan pekerjaan besar.',
+            type: 'text',
+            link: '',
+            durations: 4
+        },
+        {
+            label: 'Saya menikmati menghadiri acara sosial besar.',
+            type: 'text',
+            link: '',
+            durations: 4
+        },
+        {
+            label: 'Saya merasa energik setelah berbicara dengan banyak orang.',
+            type: 'text',
+            link: '',
+            durations: 4
+        },
+        {
+            label: 'Saya suka menjadi pusat perhatian di pesta.',
+            type: 'text',
+            link: '',
+            durations: 4
+        },
+        {
+            label: 'Saya merasa mudah memulai percakapan dengan orang asing.',
+            type: 'text',
+            link: '',
+            durations: 4
+        },
+        {
+            label: 'Saya menikmati bekerja dalam kelompok dibandingkan sendiri.',
+            type: 'text',
+            link: '',
+            durations: 4
+        },
+        {
+            label: 'Saya merasa bersemangat dalam lingkungan yang ramai.',
+            type: 'text',
+            link: '',
+            durations: 4
+        },
+        {
+            label: 'Saya tidak ragu mengungkapkan pendapat saya di depan umum.',
+            type: 'text',
+            link: '',
+            durations: 4
+        },
+        {
+            label: 'Saya merasa nyaman tampil di hadapan banyak orang.',
+            type: 'text',
+            link: '',
+            durations: 4
+        },
+        {
+            label: 'Saya sering mengambil inisiatif dalam pertemuan sosial.',
+            type: 'text',
+            link: '',
+            durations: 4
+        },
+        {
+            label: 'Saya lebih suka memiliki banyak teman daripada beberapa teman dekat.',
+            type: 'text',
+            link: '',
+            durations: 4
+        },
+        {
+            label: 'Saya merasa antusias menghadapi aktivitas baru.',
+            type: 'text',
+            link: '',
+            durations: 4
+        },
+        {
+            label: 'Saya suka berbicara dengan teman tentang berbagai pengalaman.',
+            type: 'text',
+            link: '',
+            durations: 4
+        },
+        {
+            label: 'Saya merasa mudah berteman dengan orang baru.',
+            type: 'text',
+            link: '',
+            durations: 4
+        },
+        {
+            label: 'Saya sering merasa optimis dan energik.',
+            type: 'text',
+            link: '',
+            durations: 4
+        },
+        {
+            label: 'Saya menikmati aktivitas yang melibatkan banyak orang.',
+            type: 'text',
+            link: '',
+            durations: 4
+        },
+        {
+            label: 'Saya cenderung membantu orang lain meskipun saya sibuk.',
+            type: 'text',
+            link: '',
+            durations: 4
+        },
+        {
+            label: 'Saya berusaha untuk menjaga harmoni dalam kelompok.',
+            type: 'text',
+            link: '',
+            durations: 4
+        },
+        {
+            label: 'Saya sering memikirkan bagaimana perasaan orang lain sebelum bertindak.',
+            type: 'text',
+            link: '',
+            durations: 4
+        },
+        {
+            label: 'Saya lebih suka bekerja sama daripada bersaing.',
+            type: 'text',
+            link: '',
+            durations: 4
+        },
+        {
+            label: 'Saya mudah memaafkan kesalahan orang lain.',
+            type: 'text',
+            link: '',
+            durations: 4
+        },
+        {
+            label: 'Saya sering menawarkan bantuan tanpa diminta.',
+            type: 'text',
+            link: '',
+            durations: 4
+        },
+        {
+            label: 'Saya tidak suka menyakiti perasaan orang lain.',
+            type: 'text',
+            link: '',
+            durations: 4
+        },
+        {
+            label: 'Saya selalu mendengarkan pendapat orang lain sebelum mengambil keputusan.',
+            type: 'text',
+            link: '',
+            durations: 4
+        },
+        {
+            label: 'Saya merasa nyaman membantu orang asing.',
+            type: 'text',
+            link: '',
+            durations: 4
+        },
+        {
+            label: 'Saya sering memuji keberhasilan orang lain.',
+            type: 'text',
+            link: '',
+            durations: 4
+        },
+        {
+            label: 'Saya cenderung mencari solusi yang menguntungkan semua pihak.',
+            type: 'text',
+            link: '',
+            durations: 4
+        },
+        {
+            label: 'Saya percaya pentingnya rasa saling menghormati dalam hubungan.',
+            type: 'text',
+            link: '',
+            durations: 4
+        },
+        {
+            label: 'Saya jarang merasa marah terhadap orang lain.',
+            type: 'text',
+            link: '',
+            durations: 4
+        },
+        {
+            label: 'Saya menikmati melihat orang lain bahagia karena bantuan saya.',
+            type: 'text',
+            link: '',
+            durations: 4
+        },
+        {
+            label: 'Saya sering bertindak demi kepentingan orang lain daripada diri sendiri.',
+            type: 'text',
+            link: '',
+            durations: 4
+        },
+        {
+            label: 'Saya sering merasa cemas ketika menghadapi situasi yang tidak pasti.',
+            type: 'text',
+            link: '',
+            durations: 4
+        },
+        {
+            label: 'Saya merasa sulit untuk tetap tenang ketika ada banyak tekanan.',
+            type: 'text',
+            link: '',
+            durations: 4
+        },
+        {
+            label: 'Saya sering merasa khawatir tentang masa depan.',
+            type: 'text',
+            link: '',
+            durations: 4
+        },
+        {
+            label: 'Saya mudah tersinggung oleh komentar negatif orang lain.',
+            type: 'text',
+            link: '',
+            durations: 4
+        },
+        {
+            label: 'Saya merasa cemas jika segala sesuatu tidak berjalan sesuai rencana.',
+            type: 'text',
+            link: '',
+            durations: 4
+        },
+        {
+            label: 'Saya sering merasa takut mencoba hal baru karena kemungkinan gagal.',
+            type: 'text',
+            link: '',
+            durations: 4
+        },
+        {
+            label: 'Saya merasa mudah marah ketika stres.',
+            type: 'text',
+            link: '',
+            durations: 4
+        },
+        {
+            label: 'Saya sering merasa tidak puas dengan pencapaian saya.',
+            type: 'text',
+            link: '',
+            durations: 4
+        },
+        {
+            label: 'Saya merasa sulit melupakan kesalahan di masa lalu.',
+            type: 'text',
+            link: '',
+            durations: 4
+        },
+        {
+            label: 'Saya sering memikirkan kemungkinan terburuk dari suatu situasi.',
+            type: 'text',
+            link: '',
+            durations: 4
+        },
+        {
+            label: 'Saya merasa lelah secara emosional setelah hari yang penuh tekanan.',
+            type: 'text',
+            link: '',
+            durations: 4
+        },
+        {
+            label: 'Saya sering merasa gugup saat berbicara di depan banyak orang.',
+            type: 'text',
+            link: '',
+            durations: 4
+        },
+        {
+            label: 'Saya merasa sulit untuk rileks bahkan dalam situasi santai.',
+            type: 'text',
+            link: '',
+            durations: 4
+        },
+        {
+            label: 'Saya sering merasa tidak percaya diri dalam mengambil keputusan.',
+            type: 'text',
+            link: '',
+            durations: 4
+        },
+        {
+            label: 'Saya merasa khawatir jika orang lain tidak menyukai saya.',
+            type: 'text',
+            link: '',
+            durations: 4
+        }
+    ];
+
+    const oldStatements = [
         {
             label: 'Saya sangat terbuka dengan ide gagasan paling aneh sekalipun asal bisa dibuktikan',
             type: 'text',
@@ -402,4 +859,15 @@
             durations: 6
         },
     ];
+
+    let statements = []
+    if (management == 1) {
+        statements = basicStatements.concat(oldStatements);
+    } else if (management == 2) {
+        statements = basicStatements.concat(oldStatements);
+    } else if (management == 3) {
+        statements = basicStatements.concat(lowStatements);
+    } else {
+        statements = basicStatements;
+    }
 </script>

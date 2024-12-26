@@ -3,6 +3,18 @@
     const regisForm = document.getElementById('registrasi-form');
     const submitButton = document.getElementById('submit-button');
 
+    const generateUniqueCode = (length) => {
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        let result = '';
+        for (let i = 0; i < length; i++) {
+            const randomIndex = Math.floor(Math.random() * characters.length);
+            result += characters[randomIndex];
+        }
+        return result;
+    }
+
+    const codeUnique = generateUniqueCode(10);
+
     counter.classList.toggle('hidden');
 
     regisForm.addEventListener("submit", async (e) => {
@@ -13,6 +25,7 @@
         
         const formData = {
             fullname: document.getElementById('fullname').value,
+            code: codeUnique,
             nickname: document.getElementById('nickname').value,
             birthday: document.getElementById('birthday').value,
             hometown: document.getElementById('hometown').value,
@@ -23,6 +36,7 @@
             gender: document.getElementById('gender').value,
             color: document.getElementById('color').value,
             event_id: document.getElementById('event_id').value,
+            management_id: document.getElementById('management_id').value,
         };
 
         try {
@@ -40,8 +54,11 @@
             }
             
             localStorage.setItem('fullname', formData.fullname);
+            localStorage.setItem('code', codeUnique);
             localStorage.setItem('nickname', formData.nickname);
-            localStorage.setItem('birthday', formData.birthday);
+            const parts = formData.birthday.split("-");
+            const reversedbirthday = `${parts[2]}-${parts[1]}-${parts[0]}`;
+            localStorage.setItem('birthday', formData.reversedbirthday);
             localStorage.setItem('hometown', formData.hometown);
             localStorage.setItem('father', formData.father);
             localStorage.setItem('mother', formData.mother);
@@ -50,6 +67,7 @@
             localStorage.setItem('gender', formData.gender);
             localStorage.setItem('color', formData.color);
             localStorage.setItem('event_id', formData.event_id);
+            localStorage.setItem('management_id', formData.management_id);
             
             window.location.href = "{{ route('resting-state') }}";
         } catch (error) {
@@ -59,6 +77,5 @@
             submitButton.disabled = false;
             submitButton.innerText = 'Submit';
         }
-        
     });
 </script>

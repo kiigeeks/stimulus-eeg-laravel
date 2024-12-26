@@ -130,6 +130,20 @@
                         </select>
                     </div>
                 </div>
+                <div class="flex flex-col w-full gap-1 mt-2">
+                    <span class="ml-3 text-white text-base font-poppins tracking-wide">Level</span>
+                    <div class="w-full h-9 rounded-full">
+                        <select required
+                            id="detail-management_id"
+                            name="management_id"
+                            class="font-poppins text-sm text-black bg-white rounded-full w-full h-full px-5 placeholder:italic focus:outline-none focus:ring-0">
+                            <option value="">Pilih Level</option>
+                            @foreach ($levels as $level)
+                                <option value="{{ $level->id }}">{{ $level->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
                 
 
                 <div class="flex justify-end gap-4 w-full flex-row mt-14 mb-3">
@@ -264,6 +278,7 @@
             document.querySelector('#detail-color').value = data.color;
             document.querySelector('#detail-gender').value = data.gender ? "Pria" : "Wanita";
             document.querySelector('#detail-event_id').value = data.event_id;
+            document.querySelector('#detail-management_id').value = data.management_id;
 
             // Show modal
             modalDetail.classList.remove('hidden');

@@ -2,21 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreEventRequest;
-use App\Http\Requests\UpdateEventRequest;
-use App\Models\Event;
+use App\Http\Requests\StoreManagementRequest;
+use App\Http\Requests\UpdateManagementRequest;
+use App\Models\Management;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 
-class EventController extends Controller
+class ManagementController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $datas = Event::latest()->get();
-        return view('admin.pages.events.index', [
+        $datas = Management::latest()->get();
+        return view('admin.pages.managements.index', [
             "datas" => $datas
         ]);
     }
@@ -41,11 +41,11 @@ class EventController extends Controller
 
         $validateData = $request->validate($rules);
 
-        $result = Event::create($validateData);
+        $result = Management::create($validateData);
 
         if ($result) {
             Alert::success('Congrats', 'Successfully created');
-            return to_route('events.index');
+            return to_route('managements.index');
         } else {
             Alert::error('Failed', 'Failed to created');
             return redirect()->back();
@@ -55,7 +55,7 @@ class EventController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Event $event)
+    public function show(Management $management)
     {
         //
     }
@@ -63,7 +63,7 @@ class EventController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Event $event)
+    public function edit(Management $management)
     {
         //
     }
@@ -71,14 +71,14 @@ class EventController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Event $event)
+    public function update(Request $request, Management $management)
     {
         $validated = $request->validate([
             'name' => 'required',
             'is_active' => ''
         ]);
 
-        $result = Event::where('id', $event->id)
+        $result = Management::where('id', $management->id)
                     ->update($validated);
 
         if ($result) {
@@ -93,18 +93,18 @@ class EventController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Event $event)
+    public function destroy(Management $management)
     {
         //
     }
 
     public function active(Request $request)
     {
-        $event = Event::findOrFail($request->activeId);
+        $management = Management::findOrFail($request->activeId);
 
         $data['is_active'] = true;
 
-        $result = Event::where('id', $event->id)->update($data);
+        $result = Management::where('id', $management->id)->update($data);
 
         if ($result) {
             Alert::success('Success', 'Data berhasil diaktifkan');
@@ -117,11 +117,11 @@ class EventController extends Controller
 
     public function inactive(Request $request)
     {
-        $event = Event::findOrFail($request->inactiveId);
+        $management = Management::findOrFail($request->inactiveId);
 
         $data['is_active'] = false;
 
-        $result = Event::where('id', $event->id)->update($data);
+        $result = Management::where('id', $management->id)->update($data);
 
         if ($result) {
             Alert::success('Success', 'Data berhasil dinonaktifkan');

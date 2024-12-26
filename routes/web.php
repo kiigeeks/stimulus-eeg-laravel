@@ -3,8 +3,10 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\ManagementController;
 use App\Http\Controllers\ParticipantController;
 use App\Http\Controllers\PublicController;
+use App\Http\Controllers\ValidationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,10 +30,12 @@ Route::controller(PublicController::class)->group(function () {
     Route::get('/resting-state', 'resting')->name('resting-state');
     Route::get('/biografi', 'biografi')->name('biografi');
     Route::get('/cognitive', 'cognitive')->name('cognitive');
+    Route::get('/validation', 'validation')->name('validation');
     Route::get('/finish', 'finish')->name('finish');
 });
 
 Route::resource('/participants', ParticipantController::class);
+Route::post('/validation-store/{userCode}', [ValidationController::class, 'store'])->name('validation-store');
 
 Route::controller(AuthController::class)->group(function () {
     Route::get('/cms/login', 'index')->name('admin-login')->middleware('guest');
@@ -48,29 +52,21 @@ Route::prefix('cms')
 
         Route::controller(AdminController::class)->group(function () {
 			Route::get('/dashboard', 'index')->name('admin-home');
-			// Route::get('/about', 'about')->name('admin-about-section');
-			// Route::get('/value', 'value')->name('admin-value-section');
-			// Route::get('/others', 'others')->name('admin-others-section');
-			// Route::get('/remove-others', 'removeOthers')->name('admin-remove-others');
-			// Route::get('/profile', 'profile')->name('admin-profile');
-			// Route::put('/profile/{user}', 'updateProfile')->name('admin-profile-update');
-			// Route::get('/employees', 'employees')->name('admin-employees');
-			// Route::get('/employees/create', 'create')->name('admin-employees-create');
-			// Route::post('/employees', 'store')->name('admin-employees-store');
-			// Route::get('/employees/{user}', 'detail')->name('admin-employees-detail');
-			// Route::delete('/employees/{user}', 'destroy')->name('admin-employees-destroy');
-			// Route::put('/employees/{user}', 'update')->name('admin-employees-update');
         });
 
         Route::resource('/events', EventController::class);
 		Route::post('/events/active', [EventController::class, 'active'])->name('event-active');
 		Route::post('/events/inactive', [EventController::class, 'inactive'])->name('event-inactive');
 
+        Route::resource('/managements', ManagementController::class);
+		Route::post('/managements/active', [ManagementController::class, 'active'])->name('management-active');
+		Route::post('/managements/inactive', [ManagementController::class, 'inactive'])->name('management-inactive');
+
 		Route::get('/participants', [ParticipantController::class, 'index'])->name('participants-all');
 		Route::put('/participants/{participant}', [ParticipantController::class, 'update'])->name('participants-update');
 		Route::delete('/participants/{participant}', [ParticipantController::class, 'destroy'])->name('participants-delete');
 
-
+		Route::get('/participants/validations', [ParticipantController::class, 'validations'])->name('participants-validations');
         // Route::resource('/statistiks', StatistikController::class);
         // Route::resource('/heroes', HeroController::class);
         // Route::resource('/master', MasterWebController::class);

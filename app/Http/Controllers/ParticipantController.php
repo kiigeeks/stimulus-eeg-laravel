@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreParticipantRequest;
 use App\Http\Requests\UpdateParticipantRequest;
 use App\Models\Event;
+use App\Models\Management;
 use App\Models\Participant;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -18,9 +19,23 @@ class ParticipantController extends Controller
     {
         $datas = Participant::latest()->get();
         $events = Event::latest()->get();
+        $levels = Management::latest()->get();
         return view('admin.pages.participants.index', [
             "datas" => $datas,
-            "events" => $events
+            "events" => $events,
+            "levels" => $levels
+        ]);
+    }
+
+    public function validations()
+    {
+        $datas = Participant::latest()->get();
+        $events = Event::latest()->get();
+        $levels = Management::latest()->get();
+        return view('admin.pages.validations.index', [
+            "datas" => $datas,
+            "events" => $events,
+            "levels" => $levels
         ]);
     }
 
@@ -39,6 +54,7 @@ class ParticipantController extends Controller
     {
         $rules = [
             'fullname' => 'required',
+            'code' => 'required',
             'nickname' => 'required',
             'birthday' => 'required',
             'hometown' => 'required',
@@ -49,6 +65,7 @@ class ParticipantController extends Controller
             'gender' => 'required',
             'color' => 'required',
             'event_id' => 'required',
+            'management_id' => 'required',
         ];
 
         $validateData = $request->validate($rules);
@@ -97,8 +114,8 @@ class ParticipantController extends Controller
             'gender' => 'required',
             'color' => 'required',
             'event_id' => 'required',
+            'management_id' => 'required',
         ]);
-
 
         $result = Participant::where('id', $participant->id)
                     ->update($validated);

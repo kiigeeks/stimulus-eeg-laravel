@@ -24,6 +24,20 @@
                         </svg>
                     </div>
                 </a>
+                <a href="{{ route("managements.index") }}" class="min-h-[100px] md:min-h-[150px] w-full bg-black/50 hover:bg-black/30 rounded-2xl px-5 py-3 flex flex-wrap justify-start items-start gap-3">
+                    <div class="font-poppins flex justify-start gap-5 items-center">
+                        <h1 class="text-7xl md:text-5xl text-white font-extrabold">
+                            {{ $managements }}
+                        </h1>
+                        <h3 class="text-xl font-semibold">Management Active</h3>
+                    </div>
+                    <div class="w-full flex flex-row justify-center items-center gap-3 font-poppins text-white">
+                        <span>More Detail</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 18l6-6-6-6"></path>
+                        </svg>
+                    </div>
+                </a>
                 <a href="{{ route("participants-all") }}" class="min-h-[100px] md:min-h-[150px] w-full bg-black/50 hover:bg-black/30 rounded-2xl px-5 py-3 flex flex-wrap justify-start items-start gap-3">
                     <div class="font-poppins flex justify-start gap-5 items-center">
                         <h1 class="text-7xl md:text-5xl text-white font-extrabold">

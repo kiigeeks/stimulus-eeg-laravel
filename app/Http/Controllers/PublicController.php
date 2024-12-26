@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use App\Models\Management;
 use Illuminate\Http\Request;
 
 class PublicController extends Controller
@@ -16,8 +17,10 @@ class PublicController extends Controller
     public function registration()
     {
         $events = Event::where('is_active', 1)->latest()->get();
+        $managements = Management::where('is_active', 1)->latest()->get();
         return view('public.pages.registration', [
-            'events' => $events
+            'events' => $events,
+            'managements' => $managements
         ]);
     }
 
@@ -36,6 +39,12 @@ class PublicController extends Controller
     public function cognitive()
     {
         return view('public.pages.cognitive', [
+        ]);
+    }
+
+    public function validation()
+    {
+        return view('public.pages.validation', [
         ]);
     }
 

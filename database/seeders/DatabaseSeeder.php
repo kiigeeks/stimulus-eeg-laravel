@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Event;
+use App\Models\Management;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -36,6 +38,24 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('Admin02123'),
             'roles' => 'ADMIN',
             'is_active' => false,
+        ]);
+
+        Event::create([
+            'name' => 'Star Group',
+            'is_active' => true,
+        ]);
+
+        Management::create([
+            'name' => 'Top',
+            'is_active' => true,
+        ]);
+        Management::create([
+            'name' => 'Middle',
+            'is_active' => true,
+        ]);
+        Management::create([
+            'name' => 'Low',
+            'is_active' => true,
         ]);
     }
 }

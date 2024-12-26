@@ -86,8 +86,8 @@
                                     type="text" placeholder="Nama SMA" id="senior_highschool" name="senior_highschool" required>
                             </div>
                         </div>
-                        <div class="flex flex-wrap w-full justify-between">
-                            <div class="flex flex-col mb-2.5 w-[30%]">
+                        <div class="flex flex-row gap-5">
+                            <div class="flex flex-col mb-2.5 flex-auto w-1/2">
                                 <label class="tracking-wide text-gray-700 text-base font-medium mb-1">
                                     Jenis Kelamin
                                 </label>
@@ -112,14 +112,16 @@
                                     </span>
                                 </div>
                             </div>
-                            <div class="flex flex-col mb-2.5 w-[30%]">
+                            <div class="flex flex-col mb-2.5 flex-auto w-1/2">
                                 <label class="tracking-wide text-gray-700 text-base font-medium mb-1">
                                     Warna Favorit
                                 </label>
                                 <input class="appearance-none block w-full bg-gray-100 text-gray-700 text-sm border border-gray-200 rounded py-2 px-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                     type="text" placeholder="Warna Favorit" id="color" name="color" required>
                             </div>
-                            <div class="flex flex-col mb-2.5 w-[30%]">
+                        </div>
+                        <div class="flex flex-row gap-5">
+                            <div class="flex flex-col mb-2.5 flex-auto w-1/2">
                                 <label class="tracking-wide text-gray-700 text-base font-medium mb-1">
                                     Event
                                 </label>
@@ -130,6 +132,32 @@
                                         <option value="">Pilih Event</option>
                                         @foreach ($events as $event)
                                             <option value="{{ $event->id }}">{{ $event->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    <span class="absolute bottom-2.5 right-1">
+                                        <svg
+                                            class="fill-current h-4 w-4"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 20 20"
+                                        >
+                                            <path
+                                                d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+                                            />
+                                        </svg>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="flex flex-col mb-2.5 flex-auto w-1/2">
+                                <label class="tracking-wide text-gray-700 text-base font-medium mb-1">
+                                    Level
+                                </label>
+                                <div class="relative">
+                                    <select class="appearance-none block w-full bg-gray-100 text-gray-700 text-sm border border-gray-200 rounded py-2 px-3 mr-5 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                        id="management_id" name="management_id" required
+                                    >
+                                        <option value="">Pilih Level</option>
+                                        @foreach ($managements as $management)
+                                            <option value="{{ $management->id }}">{{ $management->name }}</option>
                                         @endforeach
                                     </select>
                                     <span class="absolute bottom-2.5 right-1">
