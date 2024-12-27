@@ -58,7 +58,7 @@
             localStorage.setItem('nickname', formData.nickname);
             const parts = formData.birthday.split("-");
             const reversedbirthday = `${parts[2]}-${parts[1]}-${parts[0]}`;
-            localStorage.setItem('birthday', formData.reversedbirthday);
+            localStorage.setItem('birthday', reversedbirthday);
             localStorage.setItem('hometown', formData.hometown);
             localStorage.setItem('father', formData.father);
             localStorage.setItem('mother', formData.mother);
