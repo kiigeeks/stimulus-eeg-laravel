@@ -67,18 +67,4 @@ Route::prefix('cms')
 		Route::delete('/participants/{participant}', [ParticipantController::class, 'destroy'])->name('participants-delete');
 
 		Route::get('/participants/validations', [ParticipantController::class, 'validations'])->name('participants-validations');
-        // Route::resource('/statistiks', StatistikController::class);
-        // Route::resource('/heroes', HeroController::class);
-        // Route::resource('/master', MasterWebController::class);
-        // Route::resource('/testimonials', TestimonialController::class);
-        // Route::resource('/galleries', OurGalleryController::class);
-        // Route::resource('/contacts', ContactController::class);
-        // Route::resource('/sosmeds', SosialMediaController::class);
-        // Route::resource('/partners', PartnerController::class);
-        // Route::resource('/posts', PostController::class);
-        // Route::resource('/post-galleries', GalleryPostController::class);
-        // Route::resource('/programs', ProgramController::class);
-        // Route::resource('/facility/categories', CategoryFacilityController::class);
-        // Route::resource('/facility/facilities', FacilityController::class);
-        // Route::resource('/faqs', FaqController::class);
 });
